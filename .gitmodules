@@ -1,3 +1,4 @@
+
 [submodule "external/pocketfft"]
 	path = external/pocketfft
-	url = https://github.com/hayguen/pocketfft
+	url = https://github.com/ErichZimmer/pocketfft.git
