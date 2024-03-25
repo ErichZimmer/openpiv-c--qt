@@ -6,13 +6,20 @@
 
 This project is the result of the collaborative effort of numerous researchers in order to provide one of the fastest PIV software on the market while remaining cross-platform and open-source. The software can do the following:
 
- * Load images with .tif and .pnm extensions
- * Save images with .tif and .pnm extensions
+ * Load images
+ * Save images
  * Pre-process and modify images
  * Perform digital PIV analysis including subpixel estimation
  * and more!
  
 Additionally, two examples are provided to demonstrate how the library can be used for background subtraction of images and multi-threaded PIV analysis.
+
+## Supported Image Formats:
+
+|Extensions               | Decode | Encode |
+|-------------------------|--------|--------|
+| .pnm (.pbm, .pgm, .ppm) | x      | x      |
+| .tif                    | x      | x      |                    
 
 ## Build
 
@@ -57,7 +64,7 @@ Sometimes you only want the runtime dynamic libraries and executables. Meson com
 
 Make sure the prefix, or destdir, is set so binaries are not accidentally installed on the system.
 
-The binaries are located the build or installation directory:
+The binaries are located in the build or installation directory:
 
 Build directory:
 * builddir
