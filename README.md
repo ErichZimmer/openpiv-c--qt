@@ -18,7 +18,7 @@ Additionally, two examples are provided to demonstrate how the library can be us
 
 |Extensions               | Decode | Encode |
 |-------------------------|--------|--------|
-| .b16 (PCO CamWare(tm))  | Planned| -      | 
+| .b16 (PCO CamWare :tm: )| Planned| -      | 
 | .bmp                    | Planned| Planned| 
 | .jpeg                   | Planned| Planned| 
 | .png                    | Planned| Planned| 
