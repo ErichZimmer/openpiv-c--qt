@@ -15,7 +15,9 @@ fs = import('fs')
 
 cpp = meson.get_compiler('cpp')
 
-if cpp.get_id() == 'gcc'
+cxx_compiler = cpp.get_id() 
+
+if cxx_compiler == 'gcc'
   if not cpp.version().version_compare('>=8.4')
     error('OpenPIV-c++ requires GCC >= 8.4')
   endif
@@ -23,7 +25,8 @@ endif
 
 if cxx_compiler == 'gcc'
   openpiv_args = [
-    '-ffast-math'
+    '-ffast-math',
+    '-Wno-unknown-pragmas'
   ]
   
   add_project_arguments(
@@ -88,14 +91,6 @@ jpeg_dep = dependency(
 #  static: true
 )
 
-lzma_dep = dependency(
-  'liblzma', 
-  fallback: ['liblzma', 'lzma_dep'],
-  include_type: get_option('deps_include_type'),
-  required: true
-#  static: true
-)
-
 zlib_dep = dependency(
   'zlib', 
   fallback: ['zlib', 'zlib_dep'],
@@ -108,7 +103,7 @@ tiff_dep = dependency(
   'libtiff', 
   fallback: ['libtiff', 'libtiff4_dep'], 
   include_type: get_option('deps_include_type'),
-  default_options: ['jpeg=enabled', 'lzma=enabled', 'zlib=enabled'],
+  default_options: ['jpeg=enabled', 'zlib=enabled'],
   required: true
 #  static: true
 )
@@ -122,7 +117,7 @@ if get_option('benchmarks').enabled()
     found_benchmark = benchmark_dep.found()
 endif
 
-openpivcore_deps = [
+libopenpivcore_deps = [
   fmt_dep,
 #  jpeg_dep, # jpeg image loaders are not currently implemented
 #  png_dep, # png image loaders are not currently implemented
@@ -141,7 +136,7 @@ subdir('openpiv')
 
 openpiv_dep = declare_dependency(
     include_directories: openpiv_include,
-    dependencies: openpivcore_deps,
+    dependencies: libopenpivcore_deps,
     link_with: openpiv_lib
 )
 
