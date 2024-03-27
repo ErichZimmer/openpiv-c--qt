@@ -19,19 +19,18 @@ if cpp.get_id() == 'gcc'
   if not cpp.version().version_compare('>=8.4')
     error('OpenPIV-c++ requires GCC >= 8.4')
   endif
-elif cpp.get_id() == 'msvc'
-  error('OpenPIV-c++ requires a GNU GCC compatible compiler')
 endif
 
-_gnu_args = cpp.get_supported_arguments(
-  '-Wno-unknown-pragmas',
-  '-export-symbols'
-)
-
-add_project_arguments(
-  _gnu_args,
-  language: 'cpp'
-)
+if cxx_compiler == 'gcc'
+  openpiv_args = [
+    '-ffast-math'
+  ]
+  
+  add_project_arguments(
+    openpiv_args, 
+    language: 'cpp'
+  )
+endif
 
 pocketfft_include = include_directories(
   'external/pocketfft'

@@ -1,7 +1,13 @@
 
 #pragma once
 
+#include "core/dll_export.h"
 #include "loaders/image_loader.h"
+
+// ignore warning needs to have dll-interface
+#ifdef _MSC_VER
+#pragma warning(disable: 4251)
+#endif
 
 namespace openpiv::core {
 
@@ -11,7 +17,7 @@ namespace openpiv::core {
     ///
     /// Treats contained data as linear i.e. not a "true" PNM
     /// image as no gamma correction is applied
-    class pnm_image_loader : public image_loader
+    class DLL_EXPORT pnm_image_loader : public image_loader
     {
     public:
         pnm_image_loader();
@@ -42,3 +48,7 @@ namespace openpiv::core {
     };
 
 }
+
+#ifdef _MSC_VER
+#pragma warning(default: 4251)
+#endif

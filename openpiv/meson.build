@@ -8,11 +8,20 @@ openpiv_src = [
     libtiff_cpp_include
 ]
 
+cpp_args = [
+  '-D_USE_MATH_DEFINES',
+  '-D_EXPORT_DLL_SYMBOLS'
+]
+
+if cxx_compiler == 'gcc'
+  cpp_args += ['-export-symbols']
+endif
+
 openpiv_lib = shared_library(
-    'openpiv',
-    openpiv_src,
-    include_directories: [openpiv_include, libtiff_include, pocketfft_include],
-    dependencies: openpivcore_deps,
-    cpp_args: ['-D_USE_MATH_DEFINES'],
-    install: true
+  'openpivcore',
+  openpiv_src,
+  include_directories: [openpiv_include, pocketfft_include],
+  dependencies: libopenpivcore_deps,
+  cpp_args: cpp_args,
+  install: true
 )

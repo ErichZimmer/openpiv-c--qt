@@ -1,14 +1,20 @@
 
 #pragma once
 
+#include "core/dll_export.h"
 #include "loaders/image_loader.h"
+
+// ignore warning needs to have dll-interface
+#ifdef _MSC_VER
+#pragma warning(disable: 4251)
+#endif
 
 namespace openpiv::core {
 
     /// loader of TIFF images with support for bit depths
     /// over 8-bits per channel; will sniff the input data for
     /// TIFF of 0x49 49 2a 00 or 0x4d 4d 00 2a
-    class tiff_image_loader : public image_loader
+    class DLL_EXPORT tiff_image_loader : public image_loader
     {
     public:
         tiff_image_loader();
@@ -39,3 +45,7 @@ namespace openpiv::core {
     };
 
 }
+
+#ifdef _MSC_VER
+#pragma warning(default: 4251)
+#endif

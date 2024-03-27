@@ -5,14 +5,21 @@
 #include <iosfwd>
 
 // local
+#include "core/dll_export.h"
 #include "core/point.h"
 #include "core/size.h"
+
+// ignore warning needs to have dll-interface
+#ifdef _MSC_VER
+#pragma warning(disable: 4251)
+#endif
 
 namespace openpiv::core {
 
 /// basic 2D integer rectangle defined in terms of an origin (bottom left) and size.
 /// bottom left in this case means the minimum of x and y.
-class rect
+
+class DLL_EXPORT rect
 {
 public:
     using point_t = point2<int32_t>;
@@ -67,13 +74,17 @@ public:
     ///
     /// { {0, 0}, {10, 10} }.dilate(1.2) -> { {-1, -1}, {12, 12} }
     rect dilate( double d ) const;
-
+    
 private:
     point_t bottomLeft_;
     core::size size_;
 };
 
 /// ostream operator
-std::ostream& operator<<( std::ostream& os, const rect& r );
+DLL_EXPORT std::ostream& operator<<( std::ostream& os, const rect& r );
 
 }
+
+#ifdef _MSC_VER
+#pragma warning(default: 4251)
+#endif
