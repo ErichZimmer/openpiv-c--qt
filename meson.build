@@ -7,7 +7,7 @@ project(
   default_options: [
     'buildtype=release',
     'cpp_std=c++17',
-	'warning_level=2'
+    'warning_level=2'
   ]
 )
 
@@ -23,14 +23,14 @@ if cxx_compiler == 'gcc'
   endif
 endif
 
-if cxx_compiler == 'gcc'
-  openpiv_args = [
+if cxx_compiler != 'msvc'
+  _gnu_args = cpp.get_supported_arguments(
     '-ffast-math',
-    '-Wno-unknown-pragmas'
-  ]
+    '-Wno-unknown-pragmas',
+  )
   
   add_project_arguments(
-    openpiv_args, 
+    _gnu_args, 
     language: 'cpp'
   )
 endif

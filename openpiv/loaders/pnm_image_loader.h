@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "core/dll_export.h"
 #include "loaders/image_loader.h"
+#include "core/dll_export.h"
 
 // ignore warning needs to have dll-interface
 #ifdef _MSC_VER

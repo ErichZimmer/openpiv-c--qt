@@ -1,20 +1,23 @@
 openpiv_src = [
-    'core/size.cpp',
-    'core/rect.cpp',
-    'core/util.cpp',
-    'loaders/image_loader.cpp',
-    'loaders/pnm_image_loader.cpp',
-    'loaders/tiff_image_loader.cpp',
-    libtiff_cpp_include
+  'core/size.cpp',
+  'core/rect.cpp',
+  'core/util.cpp',
+  'loaders/image_loader.cpp',
+  'loaders/pnm_image_loader.cpp',
+  'loaders/tiff_image_loader.cpp',
+  libtiff_cpp_include
 ]
 
 cpp_args = [
-  '-D_USE_MATH_DEFINES',
-  '-D_EXPORT_DLL_SYMBOLS'
+  '-D_USE_MATH_DEFINES'
 ]
 
 if cxx_compiler == 'gcc'
-  cpp_args += ['-export-symbols']
+  cpp_args += cpp.get_supported_arguments(
+    '-export-symbols'
+  )
+elif cxx_compiler == 'msvc'
+  cpp_args += ['D_EXPORT_DLL_SYMBOLS']
 endif
 
 openpiv_lib = shared_library(
