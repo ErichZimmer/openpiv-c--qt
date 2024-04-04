@@ -4,11 +4,6 @@
 #include "loaders/image_loader.h"
 #include "core/dll_export.h"
 
-// ignore warning needs to have dll-interface
-#ifdef _MSC_VER
-#pragma warning(disable: 4251)
-#endif
-
 namespace openpiv::core {
 
     /// loader of PNM images with support for bit depths
@@ -17,30 +12,30 @@ namespace openpiv::core {
     ///
     /// Treats contained data as linear i.e. not a "true" PNM
     /// image as no gamma correction is applied
-    class DLL_EXPORT pnm_image_loader : public image_loader
+    class pnm_image_loader : public image_loader
     {
     public:
         pnm_image_loader();
         ~pnm_image_loader();
 
-        std::string name() const override;
-        int priority() const override;
-        image_loader_ptr_t clone() const override;
-        bool can_load( std::istream& ) const override;
-        bool can_save() const override;
-        size_t num_images() const override;
+        DLL_EXPORT std::string name() const override;
+        DLL_EXPORT int priority() const override;
+        DLL_EXPORT image_loader_ptr_t clone() const override;
+        DLL_EXPORT bool can_load( std::istream& ) const override;
+        DLL_EXPORT bool can_save() const override;
+        DLL_EXPORT size_t num_images() const override;
 
-        bool open( std::istream& is ) override;
-        bool extract( size_t index, g16_image& ) override;
-        bool extract( size_t index, gf_image& ) override;
-        bool extract( size_t index, rgba16_image& ) override;
+        DLL_EXPORT bool open( std::istream& is ) override;
+        DLL_EXPORT bool extract( size_t index, g16_image& ) override;
+        DLL_EXPORT bool extract( size_t index, gf_image& ) override;
+        DLL_EXPORT bool extract( size_t index, rgba16_image& ) override;
 
-        void save( std::ostream&, const g16_image& ) const override;
-        void save( std::ostream&, const gf_image& ) const override;
-        void save( std::ostream&, const rgba16_image& ) const override;
-        void save( std::ostream&, const g16_image_view& ) const override;
-        void save( std::ostream&, const gf_image_view& ) const override;
-        void save( std::ostream&, const rgba16_image_view& ) const override;
+        DLL_EXPORT void save( std::ostream&, const g16_image& ) const override;
+        DLL_EXPORT void save( std::ostream&, const gf_image& ) const override;
+        DLL_EXPORT void save( std::ostream&, const rgba16_image& ) const override;
+        DLL_EXPORT void save( std::ostream&, const g16_image_view& ) const override;
+        DLL_EXPORT void save( std::ostream&, const gf_image_view& ) const override;
+        DLL_EXPORT void save( std::ostream&, const rgba16_image_view& ) const override;
 
     private:
         struct impl;
@@ -48,7 +43,3 @@ namespace openpiv::core {
     };
 
 }
-
-#ifdef _MSC_VER
-#pragma warning(default: 4251)
-#endif

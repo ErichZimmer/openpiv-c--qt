@@ -17,7 +17,7 @@ if cxx_compiler == 'gcc'
     '-export-symbols'
   )
 elif cxx_compiler == 'msvc'
-  cpp_args += ['D_EXPORT_DLL_SYMBOLS']
+  cpp_args += ['-DEXPORT_DLL_SYMBOLS']
 endif
 
 openpiv_lib = shared_library(
