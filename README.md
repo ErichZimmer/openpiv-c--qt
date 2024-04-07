@@ -218,7 +218,6 @@ These are captured in `<dependency>.wrap`:
   * cxxopts: nice command line parsing
   * libtiff: TIFF IO support
     * libjpeg-turbo
-    * liblzma
     * zlib
 
 ## Examples
