@@ -216,10 +216,7 @@ sys     0m0.020s
 This is about 230us per interrogation area (7 cores, 3696 interrogation areas, 0.122s)
 
 ## Dependencies
-
-These are captured in `<dependency>.wrap` and are downloaded under the hood:
-
-* c++17 compiler e.g. clang++-5.0, gcc7
+* c++17 compiler e.g. clang++-5.0, gcc8
 * python3
 * [meson](https://mesonbuild.com/index.html)
   * benchmark: used to run performance benchmarks
