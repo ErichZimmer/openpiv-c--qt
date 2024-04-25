@@ -50,10 +50,10 @@ Building uses meson, and is simplified by using meson wrap files to specify the 
 * ninja (e.g. `apt install ninja-build`)
 * meson (e.g., `pip install --user meson`)
 
-Unix users can also use the method used for the Windows build environment as detailed below.
+Unix users can also use a similar method to the Windows build environment as detailed below.
 
 On Windows, the following can be used:
-* install Visual Studio 2019 or 2022. Alternatively, MinGW without POSIX thread model is also known to work.
+* install Visual Studio 2019 or 2022. Alternatively, MinGW-64 (installed via TDM-GCC 10) and Intel OneAPI c/c++ compilers alre also knwon to work
 * install miniconda or python along with venv and setup virtual environment
 * pip install cmake (optional)
 * pip install ninja
